@@ -17,7 +17,8 @@ function descWordCountSort(a, b) {
 }
 
 function longestSentence(text) {
-  let sentences = text.split(/(?<=!|\.|\?) /);
+  let sentences = text.split(/(?<=!|\.|\?) /)
+                      .map(sentence => sentence.trim());
   let sortedDescSentences = sentences.sort(descWordCountSort);
   let longestSentence = sortedDescSentences[0];
   let numberOfWords = longestSentence.split(' ').length;
@@ -80,5 +81,9 @@ let altText = 'Four score and seven years ago our fathers brought forth' +
 ' here to the unfinished work which they who fought' +
 ' here have thus far so nobly advanced.';
 
-longestSentence(longText);
-longestSentence(altText);
+// longestSentence(longText);
+// longestSentence(altText);
+
+let str = "What's up, 'Doc'?    The brown fox is superlative!"
+
+longestSentence(str);
