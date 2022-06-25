@@ -195,3 +195,29 @@ let mainArr6 = [
 
 // console.log(unique(mainArr5))
 // console.log(unique(mainArr6))
+
+
+/* ~~~~~~~~~~~~~ deepCompare analysis ~~~~~~~~~~~~~~~~~~
+- just notes on each section of the algorithm
+*/
+
+function deepCompare(o1, o2) {
+
+  if (o1 === o2) return true; // this handles primitives, also hanldes null
+
+
+  if (Number.isNaN(o1) && Number.isNaN(o2)) return true; // this hanldes NaN since NaN not strictly equal to itself
+
+  if (typeof o1 !== 'object' || typeof o2 !== 'object') return false; // this takes out of contention comparison between object and non object, they are not equal
+
+  if (Object.keys(o1).length !== Object.keys(o2).length) return false;
+  // since we are now only looking at objects we can discard any that have a different length. Arrays also have keys these are the indexes
+
+  let keys = Object.keys(o1); // objects are same size so we'll take keys from one of the objects and do a comparison with all of those
+
+  return keys.every(key => { // so this is saying every/all values accessed by using the keys have to be equal
+
+    return deepCompare(o1[key], o2[key]); // this is the recursive part, there is a comparison between both values for that key. So this will compare all values in a deep way
+
+  });
+};
