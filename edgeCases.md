@@ -1,6 +1,6 @@
-#H1 Edge Cases for Input Types
+# H1Edge Cases for Input Types
 
-##H2 String
+## H2String
 - '' empty string
 - too many spaces, needs to be cleaned up
   - '   hello world', 'hello world   ', 'hello    world'
@@ -16,7 +16,7 @@
   - etc.
 - *any other edge cases to consider for special chars?*
 
-##H3 Number
+## H3Number
 - 0 zero
 - `NaN`
 - `Infinity`, `-Infinity`
