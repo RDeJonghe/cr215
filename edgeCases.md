@@ -25,7 +25,7 @@
 - 'string' numbers `'1'`, `'2'`, `'3'`, etc.
 - *any other edge cases to consider for numbers?*
 
-##Array
+## Array
 *need to be aware of these possibilities. we may not need to handle all of these but it is important to ask*
 - empty array `[]`
 - array with just one item `[345]`
