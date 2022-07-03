@@ -3,7 +3,7 @@
 ## String
 - `''` empty string
 - too many spaces, needs to be cleaned up
-  - `'   hello world'`, `'hello world   '`, `'hello    world'`
+  - `'   hello world'`, `'hello world   '`, `'hello (multiple spaces here)  world'`
     - this last one came up as an edge case in the code review, possibly solve with `split()` and `trim()`
 - `\n`, `\t`, other whitespace to be cleaned up with `trim()`
 - case: upper or lower
