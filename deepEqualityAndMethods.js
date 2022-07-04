@@ -197,6 +197,34 @@ let mainArr6 = [
 // console.log(unique(mainArr6))
 
 
+/*
+~~~~~~~~ indexOfObject with deep compare ~~~~~~~~~
+- used to find index of an Object
+*/
+
+function indexOfObject(arr, obj) {
+  let targetIndex = -1;
+
+  for (let i = 0; i < arr.length; i += 1) {
+    if (deepCompare(arr[i], obj)) {
+      targetIndex = i
+      return targetIndex;
+    }
+  }
+  return targetIndex;
+}
+
+let arr = [
+  [2, 3, 4],
+  [3, 4, 9],
+  [2, 4, 1],
+  [7, 3, 2],
+  [3, 4, 9]
+];
+
+console.log(indexOfObject(arr, [7, 3, 2]))
+
+
 /* ~~~~~~~~~~~~~ deepCompare analysis ~~~~~~~~~~~~~~~~~~
 - just notes on each section of the algorithm
 */
