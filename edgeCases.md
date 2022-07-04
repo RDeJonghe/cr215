@@ -73,3 +73,6 @@
     - no argument `sumIt()` (where it is undefined since nothing is given)
       - this would attempt to run since loose arity, so do we handle it
     - bad data type given `sumIt('hello')`, `sumIt(1, 2, 3, 4)`
+
+## When Sorting
+- remember to ask what to do when two values are equal? (say last name, stable sort or go to first name)
