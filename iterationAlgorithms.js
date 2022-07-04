@@ -143,6 +143,36 @@ function allNeighbors(grid, x, y) {
 // console.log(allNeighbors(bigGrid, 3, 5));
 
 /*
-ALTERNATE NEIGHBORS
+~~~~~~~~~~ ALTERNATE NEIGHBORS ~~~~~~~~~~~~
+- this actually looks a lot simpler, just get everything and then filter
+- useful to understand how it works
+- less conditional logic
+- but have to remove undefined from results
 */
+
+function alternateNeighbors(grid, x, y) {
+  let rows = [grid[x - 1], grid[x], grid[x + 1]];
+  let columnIdxs = [y - 1, y, y + 1];
+  let results = [];
+
+  rows.forEach(row => {
+    if (row) {
+      columnIdxs.forEach(idx => results.push(row[idx]));
+    }
+  })
+
+  return results.filter(neighbor => neighbor !== undefined);
+}
+
+// console.log(alternateNeighbors(bigGrid, 5, 5))
+
+
+/*
+~~~~~ ALTERNATE NEIGHBORS DOESN'T INCLUDED GIVEN COORDINATE ~~~~~~~
+- basically same alternative, but you can remove the given coordinate if not needed, not 'technically' a neighbor
+- so just need to filter it out, or remove it otherwise
+- this is pretty tricky, especially when considering duplicate values, can't just filter in case there are duplicates
+- can work on this more
+*/
+
 
