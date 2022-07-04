@@ -100,3 +100,49 @@ let str3 = 'abcdefg';
 
 */
 
+
+/*
+~~~~~~~~~~~~ NEIGHBORS ~~~~~~~~~~~~~
+- algorithm to find all neighbors of a particular "coordinate"
+- includes the coordinate itself
+- coordinate is really just x,y to pinpoint a row and column
+  - these should be zero indexed for simplicity
+- difficult part is handling undefined since for elements on edge of matrix all neighbors aren't accessible
+  - this can be done with conditional logic
+- also a key featrue is iteration, to iterate over the different possiblilites of the matrix
+- a neigbor also includes diagonal
+- basic algorithm assumes square grid (but if undefined is handled maybe this isn't necessary)
+*/
+
+let bigGrid = [
+  ['a', 'b', 'c', 'd', 'e', 'f'],
+  ['g', 'h', 'i', 'j', 'k', 'l'],
+  ['m', 'n', 'o', 'p', 'q', 'r'],
+  ['s', 't', 'u', 'v', 'w', 'x'],
+  ['y', 'z', '1', '2', '3', '4'],
+  ['5', '6', '7', '8', '9', '$']
+];
+
+function allNeighbors(grid, x, y) {
+  let rows = [grid[x - 1], grid[x], grid[x + 1]];
+  let columnIdxs = [y - 1, y, y + 1];
+  let results = [];
+
+  rows.forEach(row => {
+    if (row) { // tests undefined so error isn't thrown undefined[idx] prevents
+      columnIdxs.forEach(idx => {
+        if (row[idx]) { // tests for undefined so they aren't sent to results
+          results.push(row[idx]);
+        }
+      })
+    }
+  })
+  return results;
+}
+
+// console.log(allNeighbors(bigGrid, 3, 5));
+
+/*
+ALTERNATE NEIGHBORS
+*/
+
