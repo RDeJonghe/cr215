@@ -176,3 +176,47 @@ function alternateNeighbors(grid, x, y) {
 */
 
 
+/*
+~~~~~~~~~~~~~ DIAGONALIZE / RUBIK'S CUBE ~~~~~~~~~~~~~~~~
+- not really iteration but manipulation of an array
+- shows how to really reorganize an array
+- useful for mental represenation of what can be done
+- good to be aware of in case something like this is needed
+- really just combos of map and reverse
+- so a "standard" array organized in a standard way
+- then this can be reorganized based off of the starting point
+- needs a starting position
+  - upper left, upper right, lower left, lower right
+  - with this info can then reorganize it
+- note in example deep copies are made so it is a fresh array each time
+*/
+
+let standardArr = [
+  ['a', 'b', 'c', 'd'],
+  ['e', 'f', 'g', 'h'],
+  ['i', 'j', 'k', 'l'],
+  ['m', 'n', 'o', 'p']
+];
+
+let standardArr2 = [
+  [0, 1, 2, 3, 4],
+  [1, 2, 3, 4, 5],
+  [2, 3, 4, 5, 6],
+  [3, 4, 5, 6, 7],
+  [4, 5, 6, 7, 8]
+]
+
+function diagonalizeRubiksCube(arr, position) {
+  if (position === "ul") return arr;
+  if (position === "ur") return arr.map(subArr => subArr.reverse());
+  if (position === "ll") return arr.reverse();
+  if (position === "lr") return arr.reverse().map(subArr => subArr.reverse());
+}
+
+let positions = ["ul", "ur", "ll", "lr"];
+
+positions.forEach(position => {
+  let stringified = JSON.stringify(standardArr2);
+  let deep = JSON.parse(stringified);
+  console.log(diagonalizeRubiksCube(deep, position));
+});
