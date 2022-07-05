@@ -222,7 +222,52 @@ let arr = [
   [3, 4, 9]
 ];
 
-console.log(indexOfObject(arr, [7, 3, 2]))
+// console.log(indexOfObject(arr, [7, 3, 2]))
+
+/*
+~~~~~~~ DEEP DIFFERENCE ~~~~~~~~
+- can be used to create a deep difference method that preserves anything in the first array that cannot be found in any of the remaining arrays
+- this relies on array includes object
+*/
+
+function deepDifference(...args) {
+  let firstArr = args[0];
+  let remainingArr = args.slice(1).flat();
+  let results = [];
+
+  firstArr.forEach(el => {
+    if (!arrayIncludesObject(remainingArr, el)) results.push(el);
+  })
+  return results;
+}
+
+let arr4 = [[2, 4], [6, 8], {a: 1}, {b: 2}];
+let arr5 = [[2, 4], [22, 44]];
+let arr6 = [{b: 2}, {c: 10}];
+
+// console.log(deepDifference(arr4, arr5, arr6))
+
+/*
+~~~~~~~~~ DEEP UNION ~~~~~~~~~~
+- deep compare can be used to make a deep union method
+- array includes object is needed to do this
+*/
+function deepUnion(...arrs) {
+  let results = [];
+  arrs.forEach(subArr => {
+    subArr.forEach(el => {
+      if (!arrayIncludesObject(results, el)) results.push(el);
+    })
+  })
+  return results;
+}
+
+/*
+let arr4 = [[2, 4], [6, 8], {a: 1}, {b: 2}];
+let arr5 = [[2, 4], [22, 44]];
+let arr6 = [{b: 2}, {c: 10}];
+*/
+// console.log(deepUnion(arr4, arr5, arr6));
 
 
 /* ~~~~~~~~~~~~~ deepCompare analysis ~~~~~~~~~~~~~~~~~~
