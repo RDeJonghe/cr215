@@ -269,6 +269,31 @@ let arr6 = [{b: 2}, {c: 10}];
 */
 // console.log(deepUnion(arr4, arr5, arr6));
 
+/*
+~~~~~~~~~~~~~ DEEP INTERSECTION ~~~~~~~~~~~~~~~~
+- this is tricky because of everything that needs to be checked
+- adding deep equality increases complexity.
+- be careful when dealing with the if statement to check if it's in every array argument
+*/
+
+function deepIntersection(...arrs) {
+  let results = [];
+  arrs.forEach(subArr => {
+    subArr.forEach(el => {
+      if (arrs.every(arrSub => arrayIncludesObject(arrSub, el)) && !arrayIncludesObject(results, el)) {
+        results.push(el);
+      }
+    })
+  })
+  return results;
+}
+
+let arr10 = [[2, 4], [8, 9], {a: 1}];
+let arr11 = [[77, 88], [2, 4], {a: 1}, {b: 1}];
+let arr12 = [{a: 1}, [3, 5], [2, 4]];
+
+console.log(deepIntersection(arr10, arr11, arr12));
+
 
 /* ~~~~~~~~~~~~~ deepCompare analysis ~~~~~~~~~~~~~~~~~~
 - just notes on each section of the algorithm
