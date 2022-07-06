@@ -201,6 +201,62 @@ let chars5 = ['z', 'y', 'x', 'w'];
 // console.log(primitiveArraysEqual(chars3, chars4)); // true
 // console.log(primitiveArraysEqual(chars5, chars4)); // false
 
+/*
+~~~~~~~~~~~~~ DIAMOND NUMS ~~~~~~~~~~~~~~
+- a tricky iteration problem since it involves incrementing and decrementing indexes
+- also need conditional logic to handle this appropriately
+- has to do with accessing a "diamond" in an odd rowed square matrix
+- good example of testing iteration skills
+- the "diamond numbers" are the ones represented by __ so you iterate and pull all of these
+- probably better to do it with iteration and test iteration rather than breaking it into halves like i previously tried
+- overall the takeaways are
+  - can conditionally increment/decrement the indexes
+  - this is all based on the relation to the middle of the matrix
+
+[
+  [01, 02, __, 04, 05],
+  [06, __, 08, __, 10],
+  [__, 12, 13, 14, __],
+  [16, __, 18, __, 20],
+  [21, 22, __, 24, 25]
+]
+
+*/
+
+function diamondElements(oddMatrix) {
+  let middle = Math.floor(oddMatrix.length / 2);
+  let leftIdx = middle;
+  let rightIdx = middle;
+  let results = [];
+
+  oddMatrix.forEach((subArr, subArrIdx) => {
+    if (leftIdx === rightIdx) {
+      results.push(subArr[leftIdx])
+    } else {
+      results.push(subArr[leftIdx], subArr[rightIdx]);
+    }
+
+    if (subArrIdx < middle) {
+      leftIdx -= 1;
+      rightIdx += 1;
+    } else {
+      leftIdx += 1;
+      rightIdx -= 1;
+    }
+  })
+  return results;
+}
+
+let matrix = [
+  [ 1, 2, 3, 4, 5 ],
+  [ 6, 7, 8, 9, 10 ],
+  [ 11, 12, 13, 14, 15 ],
+  [ 16, 17, 18, 19, 20 ],
+  [ 21, 22, 23, 24, 25 ]
+];
+
+console.log(diamondElements(matrix)); // [3, 7, 9, 11, 15, 17, 19, 23]
+
 
 /*
 ~~~~~~~~~~~~~ DIAGONALIZE / RUBIK'S CUBE ~~~~~~~~~~~~~~~~
