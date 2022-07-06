@@ -212,6 +212,7 @@ let chars5 = ['z', 'y', 'x', 'w'];
 - overall the takeaways are
   - can conditionally increment/decrement the indexes
   - this is all based on the relation to the middle of the matrix
+  - only works with odd squared matrices - even ones won't have a diamond since there is no middle space
 
 [
   [01, 02, __, 04, 05],
