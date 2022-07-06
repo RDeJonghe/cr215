@@ -17,12 +17,13 @@
 - *any other edge cases to consider for strings?*
 
 ## Number
-- `0` zero
+- `0` zero, `-0` negative zero
 - `NaN`
 - `Infinity`, `-Infinity`
 - decimal numbers
 - negative numbers
 - 'string' numbers `'1'`, `'2'`, `'3'`, etc.
+- discrepancy between decimal number operation (decimal + decimal doesn't add as expected)
 - *any other edge cases to consider for numbers?*
 
 ## Array
