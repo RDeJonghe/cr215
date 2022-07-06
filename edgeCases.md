@@ -14,6 +14,7 @@
   - only numbers
   - no spaces
   - etc.
+- leading zeros in a string number need to be preserved (when converting to a number and back)
 - *any other edge cases to consider for strings?*
 
 ## Number
@@ -24,6 +25,7 @@
 - negative numbers
 - 'string' numbers `'1'`, `'2'`, `'3'`, etc.
 - discrepancy between decimal number operation (decimal + decimal doesn't add as expected)
+- `BigInt` need to work with big integers
 - *any other edge cases to consider for numbers?*
 
 ## Array
@@ -35,6 +37,7 @@
 - an array that is completely 'bad' according to requirements
   - so if we are testing if words start with a vowel this would be all bad: `['the', 'big', 'table']`
 - sparse array with empty items `[1, 2, , 4]`
+  - being able to tell the difference between an empty item and an array that holds `undefined` since sparse arrays will return `undefined` if you access the empty slot *although they don't actually store undefined*
 - array with 'custom' object properties on it `[1, 2, 3, a: 'hello']`
 - is the array frozen?
 - does the array consist of different data types? or can we assume all data types will be the same within the array
@@ -63,6 +66,7 @@
   - so something like this: `{a: 1, b: '2', c: 'three'}` do we have to test that all values are of the same type?
 - does order matter for the object?
   - delicate question, generally objects shouldn't preserve order the way arrays do, how to guarantee if required?
+  - more of a curiousity with edabit problems and conversion back and forth between objects and arrays with `Object.entries()` and `Object.fromEntries()`. likely not significant for assessment
 - object with all 'good' values, object with all 'bad' values
   - so if it we were testing for even `{a: 2, b: 4}` would be all good and `{a: 1, b: 3}` would be all bad
 - *are there any other edge cases to consider for objects?*

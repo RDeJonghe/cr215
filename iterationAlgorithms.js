@@ -175,6 +175,32 @@ function alternateNeighbors(grid, x, y) {
 - can work on this more
 */
 
+/*
+~~~~~~~~~~~~~ TWO ARRAYS OF PRIMITIVES EQUAL ~~~~~~~~~~~~~~~~
+- this can be an alternative to deep equality if the array is made up of primitives
+- basically iterate and compare element by element using strict equality
+*/
+
+function primitiveArraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+
+  for (let idx = 0; idx < arr1.length; idx += 1) {
+    if (arr1[idx] !== arr2[idx]) return false;
+  }
+  return true;
+}
+
+let nums1 = [1, 2, 3, 4];
+let nums2 = [1, 2, 3, 4];
+let chars3 = ['z', 'y', 'x'];
+let chars4 = ['z', 'y', 'x'];
+let chars5 = ['z', 'y', 'x', 'w'];
+
+// console.log(primitiveArraysEqual(nums1, nums2)); // true
+// console.log(primitiveArraysEqual(nums1, chars3)); // false
+// console.log(primitiveArraysEqual(chars3, chars4)); // true
+// console.log(primitiveArraysEqual(chars5, chars4)); // false
+
 
 /*
 ~~~~~~~~~~~~~ DIAGONALIZE / RUBIK'S CUBE ~~~~~~~~~~~~~~~~
@@ -218,5 +244,5 @@ let positions = ["ul", "ur", "ll", "lr"];
 positions.forEach(position => {
   let stringified = JSON.stringify(standardArr2);
   let deep = JSON.parse(stringified);
-  console.log(diagonalizeRubiksCube(deep, position));
+  // console.log(diagonalizeRubiksCube(deep, position));
 });
