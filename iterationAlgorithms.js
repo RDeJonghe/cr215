@@ -256,7 +256,7 @@ let matrix = [
   [ 21, 22, 23, 24, 25 ]
 ];
 
-console.log(diamondElements(matrix)); // [3, 7, 9, 11, 15, 17, 19, 23]
+// console.log(diamondElements(matrix)); // [3, 7, 9, 11, 15, 17, 19, 23]
 
 
 /*
@@ -368,5 +368,24 @@ function removeColumnFromSubArr(array, colNum) {
 // console.log(removeColumn(remove1, 0));
 
 /*
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~ TRIPLETS ~~~~~~~~~~~~~~~~~~~~~~
+- iteration algorithm to get combos of 3, but aren't consecutive
+- so it's going around picking all the different elements from all the different places to get all combos of 3
+- valuable to see another way to iterate over these
 */
+
+function triplets(arr) {
+  let results = [];
+  for (let i = 0; i < arr.length - 2; i += 1) {
+    for (let j = i + 1; j < arr.length - 1; j += 1) {
+      for (let k = j + 1; k < arr.length; k += 1) {
+        results.push([arr[i], arr[j], arr[k]]);
+      }
+    }
+  }
+  return results;
+}
+
+let arrForTriplets = [1, 2, 3, 4, 5];
+
+console.log(triplets(arrForTriplets));
