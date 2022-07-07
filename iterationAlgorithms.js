@@ -303,3 +303,57 @@ positions.forEach(position => {
   let deep = JSON.parse(stringified);
   // console.log(diagonalizeRubiksCube(deep, position));
 });
+
+/*
+~~~~~~~~ REMOVE COLUMN FROM ARRAY OF SUBARRAYS ~~~~~~~~~~
+- remove a column from an array, return array with removed column
+- subarrays will all have the same length
+- can transpose, remove it as a row and then transpose back
+  - could likely also do this with iteration and splicing every element out from the subarray, but just for the sake of using transpose can do it this way
+
+*/
+
+let remove1 = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+];
+let remove2 = [
+  [1,2,3,4,5,6],
+  [6,5,4,3,2,1]
+];
+let remove3 = [
+  [1,6],
+  [2,5],
+  [3,4],
+  [4,3],
+  [5,2],
+  [6,1]
+];
+
+function transposeHelper(arr) {
+  let colNum = arr[0].length;
+  let results = [];
+  for (let i = 1; i <= colNum; i += 1) {
+    results.push([]);
+  }
+
+  arr.forEach(row => {
+    row.forEach((el, idx) => results[idx].push(el));
+  })
+  return results;
+}
+
+function removeColumn(arr, colNum) {
+  if (colNum >= arr.length) return null;
+  let transposed = transposeHelper(arr);
+  transposed.splice(colNum, 1);
+  let removed = transposeHelper(transposed);
+  return removed;
+}
+
+// console.log(removeColumn(remove1, 0));
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
