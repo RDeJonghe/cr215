@@ -55,6 +55,19 @@
     - you'd need a custom method to test that they are all acutal 'objects objects'
 - if we are expecting an array with subarrays/objects, can we assume they will all be standard?
   - not frozen, not sparse, no custom properties, all of the same data type?
+- does it work with both a "wide" and "skinny" array - maybe worth testing with both for operations like `transpose`, `zip`, etc.
+`let a2 = [
+  [1,2,3,4,5,6],
+  [6,5,4,3,2,1]
+];`
+`let a3 = [
+  [1,6],
+  [2,5],
+  [3,4],
+  [4,3],
+  [5,2],
+  [6,1]
+];`
 - *are there any other edge cases to consider for arrays?*
 
 ## Object
