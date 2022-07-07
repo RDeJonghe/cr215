@@ -345,7 +345,7 @@ function transposeHelper(arr) {
 }
 
 function removeColumn(arr, colNum) {
-  if (colNum >= arr.length) return null;
+  if (colNum >= arr[0].length) return null;
   let transposed = transposeHelper(arr);
   transposed.splice(colNum, 1);
   let removed = transposeHelper(transposed);
