@@ -352,6 +352,19 @@ function removeColumn(arr, colNum) {
   return removed;
 }
 
+// THIS IS THE OPTION WITHOUT TRANSPOSE, DEEP COPY
+function removeColumnFromSubArr(array, colNum) {
+  let stringified = JSON.stringify(array);
+  let arr = JSON.parse(stringified);
+  if (colNum > arr[0].length) return null;
+
+  arr.forEach(subArr => {
+    subArr.splice(colNum, 1);
+  })
+
+  return arr;
+}
+
 // console.log(removeColumn(remove1, 0));
 
 /*
