@@ -96,9 +96,25 @@ let str3 = 'abcdefg';
 
 /*
 ~~~~~~~~~~~~~ ALL SUBSTRINGS / SUBARRAYS ~~~~~~~~~~~~~~~
-
-
+- algorithm to find all substrings or subarrays
+  - named allSubStructures here to be generic
+- iterate through indexes
+- it works in a consecutive manner incrementing the start index and end index
+- will find all the substrings and subarrays this way, consecutively
 */
+
+function allSubStructures(dataStructure) {
+  let results = [];
+  for (let startIdx = 0; startIdx < dataStructure.length; startIdx += 1) {
+    for (let endIdx = startIdx + 1; endIdx <= dataStructure.length; endIdx += 1) {
+      results.push(dataStructure.slice(startIdx, endIdx));
+    }
+  }
+  return results;
+}
+
+console.log(allSubStructures('hello'));
+console.log(allSubStructures([0,1,2,3,4]));
 
 
 /*
@@ -200,6 +216,35 @@ let chars5 = ['z', 'y', 'x', 'w'];
 // console.log(primitiveArraysEqual(nums1, chars3)); // false
 // console.log(primitiveArraysEqual(chars3, chars4)); // true
 // console.log(primitiveArraysEqual(chars5, chars4)); // false
+
+/*
+~~~~~~~~~~~~~~ TWO OBJECTS WITH PRIMITIVE EQUAL ~~~~~~~~~~~~~~~~
+- can check the length of the keys of both first, if these are not equal then return false
+- after, given that they have the same length of keys can do a key by key comparison
+- get the keys for one object and iterate over every key
+  - access the value of this key for both objects and compare
+  - if they are not equal return false
+  - if all the keys are equal after iteration return true
+*/
+
+function objectsEqual(obj1, obj2) {
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
+  let keys = Object.keys(obj1);
+
+  return keys.every(key => {
+    return obj1[key] === obj2[key];
+  })
+}
+
+let obj1 = {a:1, b:2, c:'hello', d:3.5};
+let obj2 = {a:1, b:2, c:'hello', d:3.5};
+let obj3 = {a:1, c:'hello', b:2, d:3.5};
+let obj4 = {A:1, c:'hello', b:2, d:3.5};
+
+// console.log(objectsEqual(obj1, obj2));
+// console.log(objectsEqual(obj1, obj3));
+// console.log(objectsEqual(obj1, obj4));
 
 /*
 ~~~~~~~~~~~~~ DIAMOND NUMS ~~~~~~~~~~~~~~
