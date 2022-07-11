@@ -434,3 +434,54 @@ function triplets(arr) {
 let arrForTriplets = [1, 2, 3, 4, 5];
 
 console.log(triplets(arrForTriplets));
+
+/*
+~~~~~~ CHUNKING ~~~~~~~~
+- when you iterate over an array consecutively and make "chunks" or groups that meet certain criteria
+- this is built dynamically, in that when an element cannot be added to a group because it breaks critieria it then becomes part of the next group
+- so there are the chunks and the criteria
+- elements get added to a chunk as long as it meets criteria, when it no longer does that element becomes part of the next chunk
+- this can be displayed easily with numbers and a sum
+
+ALGORITHM
+- strategy is to first set the first element into the first chunk, it's starts there by default
+- results will have that subarray with the first element in it so it's a nested data structure
+- iteration begins on index 1
+- set current chunk index to 0
+- on each iteration test the criteria of combining the current element to the current chunk
+  - if it can be added sucessfully just add it
+  - if it can't be added
+    - create a new chunk (subarray)
+    - send it to the new chunk
+- after iteration all chunks should be made
+
+NOTE - testing the criteria in the conditional statement can be done with a helper method. Just put all in one place here, easier if it's done with a helper method.
+*/
+
+function chunk(arr, targetNum) {
+  let results = [[arr[0]]];
+  let currentChunkIdx = 0;
+  
+  for (let idx = 1; idx < arr.length; idx += 1) {
+    let currentChunk = results[currentChunkIdx];
+    let currentNum = arr[idx];
+    if (currentChunk.reduce((total, num) => total + num, 0) + currentNum <= targetNum) {
+      results[currentChunkIdx].push(currentNum);
+    } else {
+      results.push([]);
+      currentChunkIdx += 1;
+      results[currentChunkIdx].push(currentNum);
+    }
+  }
+  return results;
+}
+
+console.log(chunk([1, 2, 3, 4, 1, 0, 2, 2], 5));
+// [[1, 2], [3], [4, 1, 0], [2, 2]]
+console.log(chunk([1, 0, 1, 1, -1, 0, 0], 1));
+// // // [[1, 0], [1], [1, -1, 0, 0]]
+console.log(chunk([2, 1, 0, -1, 0, 0, 2, 1, 3], 3));
+// // [[2, 1, 0, -1, 0, 0], [2, 1], [3]]
+console.log(chunk([2], 3)); // [[2]]
+// no combination taking place (chunking)
+console.log(chunk([2, 2, 2], 3)); // [[2], [2], [2]]
