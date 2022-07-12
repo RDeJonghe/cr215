@@ -118,6 +118,37 @@ console.log(allSubStructures([0,1,2,3,4]));
 
 
 /*
+~~~~~~~~~~~ EACH SLICE ~~~~~~~~~~~~
+- allows you to get groups of a certain size, but without overlapping
+- so the start index "jupms" that size to the next needed start index
+- this could be used with string or array, it's just slicing based off of index
+
+ALGORITHM
+- take both a data structure and the size of the slice as the argument
+- set up an empty reults array
+- set start slice to 0
+- create a loop, while start slice is less than length of data structure
+- on each iteration send a slice in that is from start slice to start slice plus size
+  - this will give correct index, correct end index needs to be incremented like that each time
+- increment start slice by the group size each iteration
+  - this makes it "jump" and not overlap
+*/
+
+function eachSlice(dataStructure, sliceSize) {
+  let results = [];
+
+  for (let startSlice = 0; startSlice < dataStructure.length; startSlice += sliceSize) {
+    results.push(dataStructure.slice(startSlice, startSlice + sliceSize));
+  }
+  return results;
+}
+
+// console.log(eachSlice('abcdefghi', 2));
+// console.log(eachSlice('abcdefghi', 4));
+// console.log(eachSlice([1,2,3,4,5,6,7,8,9], 3));
+// console.log(eachSlice([1,2,3,4,5,6,7,8,9], 2));
+
+/*
 ~~~~~~~~~~~~ NEIGHBORS ~~~~~~~~~~~~~
 - algorithm to find all neighbors of a particular "coordinate"
 - includes the coordinate itself
