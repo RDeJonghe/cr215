@@ -42,9 +42,9 @@ function maxDistance(str) {
   let sections = str.split('1');
 
   let distances = sections.map((section, idx, array) => {
-    if (idx === 0 && str.startsWith('0')) {
+    if (idx === 0) {
       return section.length;
-    } else if (idx === array.length - 1 && str.endsWith('0')) {
+    } else if (idx === array.length - 1) {
       return section.length;
     } else {
       return Math.ceil(section.length / 2);
