@@ -1,4 +1,10 @@
 /*
+
+~~~~~~~~~~~~~~~~~ ROTATE ~~~~~~~~~~~~~~~~~~~~
+- algorithm for rotate here
+
+
+
 ~~~~~~~~~~~~~~~~~~ PAIRS ~~~~~~~~~~~~~~~~~~~~~~
 - this came up on a 109 practice problem
 - need to find all pair combinations in a subarray of integers
