@@ -522,3 +522,40 @@ console.log(chunk([2, 1, 0, -1, 0, 0, 2, 1, 3], 3));
 console.log(chunk([2], 3)); // [[2]]
 // no combination taking place (chunking)
 console.log(chunk([2, 2, 2], 3)); // [[2], [2], [2]]
+
+
+/*
+~~~~~~~~~~~~~~~~~~~~~~~ PERMUTATION ~~~~~~~~~~~~~~~~~~~~~~~~
+- gets all orderings, could be useful
+*/
+let permute = function(nums){
+  let result = [];
+  let backtrack = (i, nums) => {
+    if(i===nums.length){
+      result.push(nums.slice());
+      return;
+    }  
+    for(let j = i; j < nums.length; j++){
+      [nums[i],nums[j]] = [nums[j],nums[i]];
+      backtrack(i+1, nums);
+      [nums[i],nums[j]] = [nums[j],nums[i]];
+    }
+  }
+  backtrack(0, nums);
+  // console.log(result);
+  return result;
+};
+
+// subarray of 9 is the top length you can permute in coderpad
+let orderings = permute(['1','2','3','4','5','6','7','8','9']);
+
+console.log(orderings);
+
+let palindromes = orderings.filter(subArr => {
+  let strNum = subArr.join('');
+  let reversedStrNum = subArr.reverse().join('');
+
+  return strNum === reversedStrNum;
+})
+
+console.log(palindromes);
