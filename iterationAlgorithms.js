@@ -1,10 +1,37 @@
 /*
 
 ~~~~~~~~~~~~~~~~~ ROTATE ~~~~~~~~~~~~~~~~~~~~
-- algorithm for rotate here
+- take the first element and move it to the end
+- make non mutative for now
 
+ALGORITHM
+- slice the first element off an array
+- slice the elments from first to end
+- push the sliced first element to the end
+- this will be a new array
+- if want to rotate more than once can loop and reassign I'd say
+*/
 
+function rotate(arr) {
+  let firstElement = arr.slice(0,1);
+  let remainingElements = arr.slice(1);
+  remainingElements = remainingElements.concat(firstElement);
+  let rotated = remainingElements;
+  return rotated;
+}
 
+let arr = [0,1,2,3,4,5];
+
+let rotated = [...arr];
+
+// loop to do multiple rotations
+for (let i = 1; i <= 5; i += 1) {
+  rotated = rotate(rotated);
+}
+
+// console.log(arr);
+// console.log(rotated);
+/*
 ~~~~~~~~~~~~~~~~~~ PAIRS ~~~~~~~~~~~~~~~~~~~~~~
 - this came up on a 109 practice problem
 - need to find all pair combinations in a subarray of integers
